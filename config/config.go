@@ -8,7 +8,10 @@ import (
 )
 
 var (
-	Port string
+	Port              string
+	Service           string
+	BasicAuthUsername string
+	BasicAuthPassword string
 )
 
 func init() {
@@ -18,6 +21,9 @@ func init() {
 	}
 
 	Port = getEnv("PORT", "8000")
+	Service = getEnv("SERVICE", "myTodoService")
+	BasicAuthUsername = getEnv("BASIC_AUTH_USERNAME", "")
+	BasicAuthPassword = getEnv("BASIC_AUTH_PASSWORD", "")
 }
 
 func getEnv(key, defaultValue string) string {
