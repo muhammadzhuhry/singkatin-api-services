@@ -32,10 +32,18 @@ func (r *UrlRepository) InsertUrl(url *entity.Url) (*entity.Url, error) {
 	return url, nil
 }
 
-func (r *UrlRepository) FindExistedUrl(longUrl string) (*entity.Url, error) {
+func (r *UrlRepository) FindExistedUrl(payload string, typeUrl string) (*entity.Url, error) {
 	var url entity.Url
-	query := "SELECT * FROM urls WHERE long_url = ?"
-	err := r.DB.QueryRow(query, longUrl).Scan(&url.ID, &url.LongUrl, &url.ShortUrl, &url.CreatedAt, &url.ExpiredAt)
+	query := "SELECT * FROM urls WHERE"
+
+	switch typeUrl {
+	case "long":
+		query += " long_url = ?"
+	case "short":
+		query += " short_url = ?"
+	}
+
+	err := r.DB.QueryRow(query, payload).Scan(&url.ID, &url.LongUrl, &url.ShortUrl, &url.CreatedAt, &url.ExpiredAt)
 	if err != nil {
 		return nil, err
 	}
