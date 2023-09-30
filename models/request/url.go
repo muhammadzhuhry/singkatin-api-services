@@ -1,5 +1,5 @@
 package request
 
 type Url struct {
-	LongUrl string `validate:"required" json:"url"`
+	LongUrl string `validate:"required,url" json:"url"`
 }
