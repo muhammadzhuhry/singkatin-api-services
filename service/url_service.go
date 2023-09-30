@@ -9,6 +9,7 @@ import (
 	"github.com/muhammadzhuhry/singkating-api-services/models"
 	"github.com/muhammadzhuhry/singkating-api-services/models/entity"
 	"github.com/muhammadzhuhry/singkating-api-services/models/request"
+	"github.com/muhammadzhuhry/singkating-api-services/models/response"
 	"github.com/muhammadzhuhry/singkating-api-services/repository"
 )
 
@@ -45,6 +46,13 @@ func (s *UrlService) UrlShorten(c *fiber.Ctx, request request.Url) models.Respon
 		return response
 	}
 
-	response := helper.SuccessResponse(fiber.StatusCreated, payload, "Success shortning url: "+url.LongUrl)
+	resultUrl := response.Url{
+		LongUrl:      url.LongUrl,
+		ShortUrl:     url.ShortUrl,
+		ShortenedUrl: config.Domain + url.ShortUrl,
+		CreatedAt:    url.CreatedAt,
+		ExpiredAt:    url.ExpiredAt,
+	}
+	response := helper.SuccessResponse(fiber.StatusCreated, resultUrl, "Success shortning url: "+resultUrl.LongUrl)
 	return response
 }
