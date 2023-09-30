@@ -13,6 +13,7 @@ var (
 	BasicAuthUsername  string
 	BasicAuthPassword  string
 	MySQLConnectionURL string
+	Timezone           string
 )
 
 func init() {
@@ -26,6 +27,7 @@ func init() {
 	BasicAuthUsername = getEnv("BASIC_AUTH_USERNAME", "")
 	BasicAuthPassword = getEnv("BASIC_AUTH_PASSWORD", "")
 	MySQLConnectionURL = getEnv("MYSQL_CONNECTION_URL", "")
+	Timezone = getEnv("TIMEZONE", "Asia/Bangkok")
 }
 
 func getEnv(key, defaultValue string) string {
