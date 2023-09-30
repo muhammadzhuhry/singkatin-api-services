@@ -8,10 +8,11 @@ import (
 )
 
 var (
-	Port              string
-	Service           string
-	BasicAuthUsername string
-	BasicAuthPassword string
+	Port               string
+	Service            string
+	BasicAuthUsername  string
+	BasicAuthPassword  string
+	MySQLConnectionURL string
 )
 
 func init() {
@@ -24,6 +25,7 @@ func init() {
 	Service = getEnv("SERVICE", "myTodoService")
 	BasicAuthUsername = getEnv("BASIC_AUTH_USERNAME", "")
 	BasicAuthPassword = getEnv("BASIC_AUTH_PASSWORD", "")
+	MySQLConnectionURL = getEnv("MYSQL_CONNECTION_URL", "")
 }
 
 func getEnv(key, defaultValue string) string {
