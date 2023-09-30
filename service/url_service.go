@@ -34,7 +34,7 @@ func (s *UrlService) UrlShorten(c *fiber.Ctx, request request.Url) models.Respon
 	}
 
 	// logic check duplicate url
-	data, _ := s.UrlRepository.FindExistedUrl(payload.LongUrl)
+	data, _ := s.UrlRepository.FindExistedUrl(payload.LongUrl, "long")
 	if data != nil {
 		response := helper.ErrorResponse(fiber.StatusConflict, nil, "URL :"+payload.LongUrl+" has been shortened before")
 		return response
@@ -54,5 +54,23 @@ func (s *UrlService) UrlShorten(c *fiber.Ctx, request request.Url) models.Respon
 		ExpiredAt:    url.ExpiredAt,
 	}
 	response := helper.SuccessResponse(fiber.StatusCreated, resultUrl, "Success shortning url: "+resultUrl.LongUrl)
+	return response
+}
+
+func (s *UrlService) RedirectUrl(c *fiber.Ctx, request string) models.Response {
+	url, err := s.UrlRepository.FindExistedUrl(request, "short")
+	if err != nil {
+		response := helper.ErrorResponse(fiber.StatusNotFound, nil, "Cannot find url : "+request)
+		return response
+	}
+
+	result := response.Url{
+		LongUrl:      url.LongUrl,
+		ShortUrl:     url.ShortUrl,
+		ShortenedUrl: config.Domain + url.ShortUrl,
+		CreatedAt:    url.CreatedAt,
+		ExpiredAt:    url.ExpiredAt,
+	}
+	response := helper.SuccessResponse(fiber.StatusCreated, result, "Success get long url: "+result.ShortenedUrl)
 	return response
 }
