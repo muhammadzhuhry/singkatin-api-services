@@ -42,3 +42,16 @@ func (h *UrlHandler) UrlShorten(c *fiber.Ctx) error {
 	response := h.UrlService.UrlShorten(c, payload)
 	return helper.SendResponse(c, response)
 }
+
+func (h *UrlHandler) RedirectUrl(c *fiber.Ctx) error {
+	url := c.Query("url")
+
+	err := h.Validate.Var(url, "required")
+	if err != nil {
+		response := helper.ErrorResponse(fiber.StatusBadRequest, nil, err.Error())
+		return helper.SendResponse(c, response)
+	}
+
+	response := h.UrlService.RedirectUrl(c, url)
+	return helper.SendResponse(c, response)
+}
