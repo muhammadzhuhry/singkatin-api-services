@@ -6,15 +6,18 @@ import (
 	"github.com/muhammadzhuhry/singkating-api-services/helper"
 	"github.com/muhammadzhuhry/singkating-api-services/models"
 	"github.com/muhammadzhuhry/singkating-api-services/models/request"
+	"github.com/muhammadzhuhry/singkating-api-services/service"
 )
 
 type UrlHandler struct {
-	Validate *validator.Validate
+	UrlService service.UrlService
+	Validate   *validator.Validate
 }
 
-func NewUrlHandler(validate *validator.Validate) *UrlHandler {
+func NewUrlHandler(urlService *service.UrlService, validate *validator.Validate) *UrlHandler {
 	return &UrlHandler{
-		Validate: validate,
+		UrlService: *urlService,
+		Validate:   validate,
 	}
 }
 
@@ -36,11 +39,6 @@ func (h *UrlHandler) UrlShorten(c *fiber.Ctx) error {
 		return helper.SendResponse(c, response)
 	}
 
-	response := models.Response{
-		Code:    200,
-		Status:  true,
-		Data:    nil,
-		Message: "Success shortning url",
-	}
+	response := h.UrlService.UrlShorten(c, payload)
 	return helper.SendResponse(c, response)
 }
