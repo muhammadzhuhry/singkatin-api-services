@@ -3,10 +3,10 @@ package handlers
 import (
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
-	"github.com/muhammadzhuhry/singkating-api-services/helper"
-	"github.com/muhammadzhuhry/singkating-api-services/models"
-	"github.com/muhammadzhuhry/singkating-api-services/models/request"
-	"github.com/muhammadzhuhry/singkating-api-services/service"
+	"github.com/muhammadzhuhry/singkatin-api-services/helper"
+	"github.com/muhammadzhuhry/singkatin-api-services/models"
+	"github.com/muhammadzhuhry/singkatin-api-services/models/request"
+	"github.com/muhammadzhuhry/singkatin-api-services/service"
 )
 
 type UrlHandler struct {

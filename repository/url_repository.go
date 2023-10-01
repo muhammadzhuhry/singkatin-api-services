@@ -3,7 +3,7 @@ package repository
 import (
 	"database/sql"
 
-	"github.com/muhammadzhuhry/singkating-api-services/models/entity"
+	"github.com/muhammadzhuhry/singkatin-api-services/models/entity"
 )
 
 type UrlRepository struct {

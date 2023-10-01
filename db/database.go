@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/muhammadzhuhry/singkating-api-services/config"
+	"github.com/muhammadzhuhry/singkatin-api-services/config"
 )
 
 func NewDB() *sql.DB {

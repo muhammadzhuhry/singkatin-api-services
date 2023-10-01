@@ -4,13 +4,13 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/muhammadzhuhry/singkating-api-services/config"
-	"github.com/muhammadzhuhry/singkating-api-services/helper"
-	"github.com/muhammadzhuhry/singkating-api-services/models"
-	"github.com/muhammadzhuhry/singkating-api-services/models/entity"
-	"github.com/muhammadzhuhry/singkating-api-services/models/request"
-	"github.com/muhammadzhuhry/singkating-api-services/models/response"
-	"github.com/muhammadzhuhry/singkating-api-services/repository"
+	"github.com/muhammadzhuhry/singkatin-api-services/config"
+	"github.com/muhammadzhuhry/singkatin-api-services/helper"
+	"github.com/muhammadzhuhry/singkatin-api-services/models"
+	"github.com/muhammadzhuhry/singkatin-api-services/models/entity"
+	"github.com/muhammadzhuhry/singkatin-api-services/models/request"
+	"github.com/muhammadzhuhry/singkatin-api-services/models/response"
+	"github.com/muhammadzhuhry/singkatin-api-services/repository"
 )
 
 type UrlService struct {

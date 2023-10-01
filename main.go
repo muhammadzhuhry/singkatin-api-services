@@ -4,13 +4,13 @@ import (
 	"github.com/go-playground/validator/v10"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gofiber/fiber/v2"
-	"github.com/muhammadzhuhry/singkating-api-services/config"
-	"github.com/muhammadzhuhry/singkating-api-services/db"
-	"github.com/muhammadzhuhry/singkating-api-services/handlers"
-	"github.com/muhammadzhuhry/singkating-api-services/helper"
-	"github.com/muhammadzhuhry/singkating-api-services/repository"
-	"github.com/muhammadzhuhry/singkating-api-services/routes"
-	"github.com/muhammadzhuhry/singkating-api-services/service"
+	"github.com/muhammadzhuhry/singkatin-api-services/config"
+	"github.com/muhammadzhuhry/singkatin-api-services/db"
+	"github.com/muhammadzhuhry/singkatin-api-services/handlers"
+	"github.com/muhammadzhuhry/singkatin-api-services/helper"
+	"github.com/muhammadzhuhry/singkatin-api-services/repository"
+	"github.com/muhammadzhuhry/singkatin-api-services/routes"
+	"github.com/muhammadzhuhry/singkatin-api-services/service"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/muhammadzhuhry/singkating-api-services
+module github.com/muhammadzhuhry/singkatin-api-services
 
 go 1.20
 

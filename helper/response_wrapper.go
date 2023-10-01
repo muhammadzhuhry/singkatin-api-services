@@ -2,7 +2,7 @@ package helper
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/muhammadzhuhry/singkating-api-services/models"
+	"github.com/muhammadzhuhry/singkatin-api-services/models"
 )
 
 func SuccessResponse(code int, data interface{}, message string) models.Response {

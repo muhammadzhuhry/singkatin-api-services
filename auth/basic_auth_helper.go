@@ -4,8 +4,8 @@ import (
 	"encoding/base64"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/muhammadzhuhry/singkating-api-services/config"
-	"github.com/muhammadzhuhry/singkating-api-services/helper"
+	"github.com/muhammadzhuhry/singkatin-api-services/config"
+	"github.com/muhammadzhuhry/singkatin-api-services/helper"
 )
 
 func BasicAuthMiddleware() fiber.Handler {

@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/muhammadzhuhry/singkating-api-services/auth"
-	"github.com/muhammadzhuhry/singkating-api-services/handlers"
+	"github.com/muhammadzhuhry/singkatin-api-services/auth"
+	"github.com/muhammadzhuhry/singkatin-api-services/handlers"
 )
 
 func SetupURLRoute(app *fiber.App, urlHandler *handlers.UrlHandler) {
