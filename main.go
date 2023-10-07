@@ -4,6 +4,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/muhammadzhuhry/singkatin-api-services/config"
 	"github.com/muhammadzhuhry/singkatin-api-services/db"
 	"github.com/muhammadzhuhry/singkatin-api-services/handlers"
@@ -15,6 +16,12 @@ import (
 
 func main() {
 	app := fiber.New()
+
+	// cors
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowMethods: "GET,POST",
+	}))
 
 	// initialize new db
 	db := db.NewDB()
