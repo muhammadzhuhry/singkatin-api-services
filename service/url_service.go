@@ -58,9 +58,17 @@ func (s *UrlService) UrlShorten(c *fiber.Ctx, request request.Url) models.Respon
 }
 
 func (s *UrlService) RedirectUrl(c *fiber.Ctx, request string) models.Response {
+	location := time.FixedZone(config.Timezone, 7*60*60)
 	url, err := s.UrlRepository.FindExistedUrl(request, "short")
 	if err != nil {
 		response := helper.ErrorResponse(fiber.StatusNotFound, nil, "Cannot find url : "+request)
+		return response
+	}
+
+	expired, _ := time.ParseInLocation("2006-01-02 15:04:05", url.ExpiredAt, location)
+	if expired.Before(time.Now()) {
+		s.UrlRepository.DeleteExpiredUrl(url.ShortUrl)
+		response := helper.ErrorResponse(fiber.StatusBadRequest, nil, "url: "+request+" is expired")
 		return response
 	}
 
