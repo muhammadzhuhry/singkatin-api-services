@@ -50,3 +50,13 @@ func (r *UrlRepository) FindExistedUrl(payload string, typeUrl string) (*entity.
 
 	return &url, nil
 }
+
+func (r *UrlRepository) DeleteExpiredUrl(payload string) error {
+	command := "DELETE FROM urls WHERE short_url = ?"
+	_, err := r.DB.Exec(command, payload)
+	if err != nil {
+		return err
+	}
+
+	return err
+}
