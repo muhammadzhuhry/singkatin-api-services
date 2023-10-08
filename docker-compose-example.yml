@@ -1,0 +1,22 @@
+version: '3'
+services:
+  singkatin-api-services:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_DATABASE: singkatin_db
+      MYSQL_USER: ''
+      MYSQL_PASSWORD: ''
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "true"
+    ports:
+      - "3306:3306"
