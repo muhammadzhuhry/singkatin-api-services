@@ -42,6 +42,7 @@ func (s *UrlService) UrlShorten(c *fiber.Ctx, request request.Url) models.Respon
 
 	url, err := s.UrlRepository.InsertUrl(&payload)
 	if err != nil {
+		helper.Log.Error("Error while inserting url: ", err.Error())
 		response := helper.ErrorResponse(fiber.StatusInternalServerError, nil, "Failed to shortning url")
 		return response
 	}
