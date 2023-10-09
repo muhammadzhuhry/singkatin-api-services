@@ -2,6 +2,7 @@ package auth
 
 import (
 	"encoding/base64"
+	"fmt"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/muhammadzhuhry/singkatin-api-services/config"
@@ -16,6 +17,8 @@ func BasicAuthMiddleware() fiber.Handler {
 		authString := base64.StdEncoding.EncodeToString([]byte(username + ":" + password))
 		authHeader := "Basic " + authString
 
+		fmt.Println("authString:", authString)
+		fmt.Println("authHeader:", authHeader)
 		if c.Get("Authorization") != authHeader {
 			res := helper.ErrorResponse(fiber.StatusUnauthorized, nil, "Unauthorized")
 			return helper.SendResponse(c, res)
