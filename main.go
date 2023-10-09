@@ -38,6 +38,6 @@ func main() {
 	// setup routes
 	routes.SetupURLRoute(app, urlHandler)
 
-	helper.Log.Info("Server started on port: "+config.Port, config.BasicAuthUsername, config.BasicAuthPassword)
+	helper.Log.Info("Server started on port: " + config.Port)
 	app.Listen(":" + config.Port)
 }
