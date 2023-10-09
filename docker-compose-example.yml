@@ -23,5 +23,13 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
 
+  caddy:
+    image: caddy:latest
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+
 volumes:
   mariadb_data:
