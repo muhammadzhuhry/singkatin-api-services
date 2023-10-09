@@ -1,0 +1,4 @@
+yourdomain.com {
+    tls yourmail@email.com
+    reverse_proxy app:80
+}
